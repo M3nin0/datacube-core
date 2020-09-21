@@ -138,7 +138,7 @@ def _get_distributed_executor(scheduler):
             future.release()
 
     try:
-        executor = DistributedExecutor(distributed.Client(":".join(scheduler)))
+        executor = DistributedExecutor(distributed.Client(":".join(map(str, scheduler))))
         return executor
     except IOError:
         return None
